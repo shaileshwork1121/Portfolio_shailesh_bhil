@@ -1,1 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shailesh Bhil Portfolio</title>
+    <style>
+        :root {
+            --bg-main: #0b0f19;
+            --bg-card: #151b2c;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-gradient: linear-gradient(135deg, #6366f1, #3b82f6);
+            --border-color: rgba(255, 255, 255, 0.05);
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(145deg, #111827, #1e1b4b);
+            border: 1px solid var(--border-color);
+            padding: 60px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            margin-bottom: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+            background: linear-gradient(to right, #ffffff, #93c5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h2 {
+            font-size: 22px;
+            font-weight: 500;
+            color: #38bdf8;
+            margin-bottom: 24px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .profile {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(99, 102, 241, 0.2);
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.2);
+        }
+
+        /* General Section Styling */
+        .section {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 24px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+        }
+
+        .section h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 40px;
+            height: 4px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+        }
+
+        .about-text {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* Skills Section */
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .skill {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 16px;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .skill:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .skill-name {
+            font-weight: 500;
+            font-size: 15px;
+            margin-bottom: 12px;
+            color: #e2e8f0;
+        }
+
+        .bar {
+            height: 6px;
+            background: #1e293b;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .fill {
+            height: 100%;
+            background: var(--accent-gradient);
+            border-radius: 10px;
+        }
+
+        /* Timeline Styles (Education & Internship) */
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 25px;
+            border-left: 2px solid #334155;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #3b82f6;
+            box-shadow: 0 0 10px #3b82f6;
+        }
+
+        .timeline-item h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #e2e8f0;
+        }
+
+        .timeline-item p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        .timeline-subtitle {
+            color: #38bdf8 !important;
+            font-weight: 500;
+        }
+
+        /* Projects Section */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .project {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 25px;
+            border-radius: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.3);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .project h3 {
+            font-size: 19px;
+            color: #e2e8f0;
+            margin-bottom: 10px;
+        }
+
+        .project p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* Languages Layout */
+        .lang-list {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+
+        .lang-list li {
+            background: #1e293b;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Contact Section */
+        .contact {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .contact-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 18px;
+            border-radius: 14px;
+            font-size: 14px;
+            color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background 0.3s;
+        }
+
+        .contact-box:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Button Styling */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: var(--accent-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: opacity 0.3s, transform 0.3s;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.95;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 40px;
+            color: #475569;
+            font-size: 14px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Responsive Design */
+        @media(max-width:768px){
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 40px 25px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero p {
+                margin: 0 auto 25px auto;
+            }
+
+            .profile {
+                width: 180px;
+                height: 180px;
+            }
+
+            .section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="hero">
+        <div class="hero-text">
+            <h1>Bhil Shailesh</h1>
+            <h2>PHP Developer | Web Developer</h2>
+            <p>
+                I am a passionate PHP Developer and BSc IT graduate with knowledge of PHP,
+                HTML5, CSS3, JavaScript and Python. I enjoy building responsive websites,
+                web applications and learning new technologies to improve my development skills.
+            </p>
+            <a href="#contact" class="btn">Contact Me</a>
+        </div>
+        <img src="IMG_20260529_130734.png" class="profile" alt="Shailesh">
+    </div>
+
+    <div class="section">
+        <h2>About Me</h2>
+        <p class="about-text">
+            BSc IT graduate with a strong interest in Web Development and PHP Programming.
+            Experienced in creating responsive websites and projects using HTML, CSS,
+            JavaScript and PHP. Quick learner, problem solver and dedicated towards
+            continuous learning and professional growth.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Skills</h2>
+        <div class="skills">
+            <div class="skill">
+                <div class="skill-name">PHP Development</div>
+                <div class="bar"><div class="fill" style="width:90%"></div></div>
+            </div>
+            <div class="skill">
+                <div class="skill-name">HTML5</div>
+                <div class="bar"><div class="fill" style="width:95%"></div></div>
+            </div>
+            <div class="skill">
+                <div class="skill-name">CSS3</div>
+                <div class="bar"><div class="fill" style="width:95%"></div></div>
+            </div>
+            <div class="skill">
+                <div class="skill-name">JavaScript</div>
+                <div class="bar"><div class="fill" style="width:75%"></div></div>
+            </div>
+            <div class="skill">
+                <div class="skill-name">Python</div>
+                <div class="bar"><div class="fill" style="width:80%"></div></div>
+            </div>
+            <div class="skill">
+                <div class="skill-name">Responsive Web Design</div>
+                <div class="bar"><div class="fill" style="width:90%"></div></div>
+            </div>
+            <div class="skill">
+                <div class="skill-name">GitHub</div>
+                <div class="bar"><div class="fill" style="width:85%"></div></div>
+            </div>
+            <div class="skill">
+                <div class="skill-name">VS Code</div>
+                <div class="bar"><div class="fill" style="width:90%"></div></div>
+            </div>
+            <div class="skill">
+                <div class="skill-name">MS Office</div>
+                <div class="bar"><div class="fill" style="width:80%"></div></div>
+            </div>
+            <div class="skill">
+                <div class="skill-name">3D Design</div>
+                <div class="bar"><div class="fill" style="width:75%"></div></div>
+            </div>
+            <div class="skill">
+                <div class="skill-name">Problem Solving</div>
+                <div class="bar"><div class="fill" style="width:85%"></div></div>
+            </div>
+            <div class="skill">
+                <div class="skill-name">Quick Learner</div>
+                <div class="bar"><div class="fill" style="width:95%"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Education</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>BSc IT</h3>
+                <p class="timeline-subtitle">Geetanjali Group Of Colleges, Rajkot</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Higher Secondary Education</h3>
+                <p>Shree Sandipani Vidhyasankul, Rajkot</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Secondary Education</h3>
+                <p>Shree Sandipani Vidhyasankul, Rajkot</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Internship</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>56Innovative Game Pvt. Ltd.</h3>
+                <p class="timeline-subtitle">Developer Intern - Ahmedabad</p>
+                <p>January 2026</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Projects</h2>
+        <div class="project-grid">
+            <div class="project">
+                <h3>Krishna Tours & Travels Website</h3>
+                <p>
+                    Responsive travel website developed using HTML and CSS.
+                    Features tour packages, travel services, booking information
+                    and mobile-friendly design.
+                </p>
+            </div>
+            <div class="project">
+                <h3>Personal Portfolio Website</h3>
+                <p>
+                    Modern responsive portfolio website showcasing skills,
+                    education, internship and projects.
+                </p>
+            </div>
+            <div class="project">
+                <h3>PHP E-Commerce Project</h3>
+                <p>
+                    Simple e-commerce website developed using PHP and MySQL.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Languages</h2>
+        <ul class="lang-list">
+            <li>English</li>
+            <li>Hindi</li>
+            <li>Gujarati</li>
+        </ul>
+    </div>
+
+    <div class="section" id="contact">
+        <h2>Contact</h2>
+        <div class="contact">
+            <div class="contact-box">📧 shaileshbhil1121@gmail.com</div>
+            <div class="contact-box">📞 9054966435</div>
+            <div class="contact-box">📍 Surat, Gujarat</div>
+            <div class="contact-box">🔗 linkedin.com/in/shailesh-bhil</div>
+        </div>
+    </div>
+
+    <footer>
+        © 2026 Bhil Shailesh | PHP Developer | Python Developer 
+    
+    </footer>
+
+</div>
+
+</body>
+</html>
